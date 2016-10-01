@@ -81,7 +81,7 @@ class TestPanel(wx.Panel):
             return sys.executable, os.spawnl
 
 
-#- run.py ---------------------------------------------------------------------
+#- wxPy Demo -----------------------------------------------------------------
 
 def runTest(frame, nb, log):
     win = TestPanel(nb, log)
