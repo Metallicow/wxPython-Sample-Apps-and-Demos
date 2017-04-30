@@ -87,11 +87,11 @@ except ImportError:
         raise exc
 
 #--wxPython Imports.
-try:
-    import wxversion
-    wxversion.select('3.0.3-msw-phoenix')  # Used to force wxPython version
-except ImportError:
-    traceback.print_exc()
+### try:
+###     import wxversion
+###     wxversion.select('3.0.3-msw-phoenix')  # Used to force wxPython version
+### except ImportError:
+###     traceback.print_exc()
 try:
     import wx
     # print(wx.version())
@@ -2586,58 +2586,6 @@ class wxPythonDemo(wx.Frame):
 
         # self.UpdateNotebook()
 
-    def zLoadDemo(self, demoName):
-        try:
-            wx.BeginBusyCursor()
-            self.gMainPanel.Freeze()
-
-            os.chdir(self.cwd)
-            try:
-                # print('CodePage Pos on Load:', self.codePage.editor.GetCurrentPos())
-                _codePagePositions[self.demoModules.name] = [self.codePage.editor.GetCurrentPos(),
-                                                            self.codePage.editor.GetFirstVisibleLine(),
-                                                            self.codePage.editor.GetSelectionStart(),
-                                                            self.codePage.editor.GetSelectionEnd()]
-            except AttributeError:
-                pass #first time
-
-            self.ShutdownDemoModule()
-
-            if demoName == self.overviewText:
-                # User selected the "wxPython Overview" node
-                # i.e.: _this_ module
-                # Changing the main window at runtime not yet supported...
-                self.demoModules = DemoModules(__name__)
-                self.SetOverview(self.overviewText, mainOverview)
-                self.LoadDemoSource()
-                self.UpdateNotebook(0)
-            else:
-                if os.path.exists(GetOriginalFilename(demoName)):
-                    wx.LogMessage("Loading demo %s.py..." % demoName)
-                    self.demoModules = DemoModules(demoName)
-                    self.LoadDemoSource()
-
-                else:
-
-                    package, overview = LookForExternals(self.externalDemos, demoName)
-
-                    if package:
-                        wx.LogMessage("Loading demo %s.py..." % ("%s/%s"%(package, demoName)))
-                        self.demoModules = DemoModules("%s/%s"%(package, demoName))
-                        self.LoadDemoSource()
-                    elif overview:
-                        self.SetOverview(demoName, overview)
-                        self.codePage = None
-                        self.UpdateNotebook(0)
-                    else:
-                        self.SetOverview("wxPython", mainOverview)
-                        self.codePage = None
-                        self.UpdateNotebook(0)
-
-        finally:
-            wx.EndBusyCursor()
-            self.gMainPanel.Thaw()
-
     #---------------------------------------------
     def LoadDemoSource(self):
         self.codePage = None
@@ -3781,15 +3729,6 @@ class MyApp(wx.App, wx.lib.mixins.inspection.InspectionMixin):
         print('GetEnteredWindow = %s' % self.GetEnteredWindow())
         print('GetWheelRotation = %s' % wr)
         print('wx.Window.FindFocus().GetClassName() = %s' % wx.Window.FindFocus().GetClassName())
-
-        # Gittery/Ugly.
-        #HACK# windowWithFocus = wx.Window.FindFocus()
-        #HACK# windowWithFocusClassName = windowWithFocus.GetClassName()
-        #HACK# if windowWithFocusClassName in ('wxHtmlWindow'): # reverse/nullify the action fix
-        #HACK#     if wr > 0:
-        #HACK#         windowWithFocus.ScrollLines(3)
-        #HACK#     elif wr < 0:
-        #HACK#         windowWithFocus.ScrollLines(-3)
 
         enteredWindow = self.GetEnteredWindow()
         className = enteredWindow.GetClassName()
