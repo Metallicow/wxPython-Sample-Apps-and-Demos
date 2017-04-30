@@ -2,4 +2,4 @@
 wxPython sample apps and demos
 
 
-![screenie](https://raw.github.com/Metallicow/wxPython-Sample-Apps-and-Demos/tree/master/screenshots/__demo__pySubFolderStructure.png)
+![screenie](https://github.com/Metallicow/wxPython-Sample-Apps-and-Demos/blob/master/screenshots/__demo__pySubFolderStructure.png)
