@@ -12,7 +12,7 @@ import wx.lib.dialogs
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/lib.dialogs.ScrolledMessageDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.dialogs.ScrolledMessageDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

@@ -7,7 +7,7 @@ toolbars that must not take up too much screen area. In other respects, it's the
 same as a wx.Frame.
 """
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/MiniFrame.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.MiniFrame.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 #-Imports-----------------------------------------------------------------------

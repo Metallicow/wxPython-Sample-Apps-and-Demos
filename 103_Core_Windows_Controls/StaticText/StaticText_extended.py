@@ -15,7 +15,7 @@ else:
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/StaticText.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.StaticText.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

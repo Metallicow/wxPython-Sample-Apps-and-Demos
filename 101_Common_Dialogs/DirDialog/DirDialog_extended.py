@@ -9,7 +9,7 @@ import wx
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/DirDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.DirDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

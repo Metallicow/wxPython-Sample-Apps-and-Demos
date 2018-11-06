@@ -7,7 +7,7 @@
 import  wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Choicebook.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Choicebook.html'
 __wxPyDemoPanel__ = 'TestChoicebook'
 
 overview = """<html><body>

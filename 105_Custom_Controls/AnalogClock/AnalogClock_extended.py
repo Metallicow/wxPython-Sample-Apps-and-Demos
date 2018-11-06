@@ -13,7 +13,7 @@ import wx
 import wx.lib.analogclock as ac
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.analogclock.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.analogclock.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html>

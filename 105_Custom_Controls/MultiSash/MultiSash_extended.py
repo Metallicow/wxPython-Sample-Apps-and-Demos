@@ -7,7 +7,7 @@ import wx.lib.multisash as sash
 import wx.stc as stc
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/lib.multisash.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.multisash.html'
 __wxPyDemoPanel__ = 'TestWindow'
 
 overview = """<html><body>

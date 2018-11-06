@@ -8,7 +8,7 @@ import wx
 import wx.lib.editor as editor
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.editor.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.editor.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """

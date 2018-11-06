@@ -16,7 +16,7 @@ from wx.lib.gestures import MouseGestures
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.gestures.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.gestures.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\<html><body>

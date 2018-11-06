@@ -8,7 +8,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Slider.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Slider.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

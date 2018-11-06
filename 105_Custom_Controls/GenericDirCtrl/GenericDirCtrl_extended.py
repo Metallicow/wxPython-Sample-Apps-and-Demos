@@ -7,7 +7,7 @@
 import wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.GenericDirCtrl.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.GenericDirCtrl.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

@@ -21,7 +21,7 @@ gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/TreeCtrl.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.TreeCtrl.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

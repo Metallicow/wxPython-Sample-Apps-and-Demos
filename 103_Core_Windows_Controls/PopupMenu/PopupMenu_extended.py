@@ -21,7 +21,7 @@ except Exception:
 gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/PopupMenu.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.PopupMenu.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 

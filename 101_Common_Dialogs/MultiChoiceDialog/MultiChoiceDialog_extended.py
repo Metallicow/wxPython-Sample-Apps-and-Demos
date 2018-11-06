@@ -8,7 +8,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/MultiChoiceDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.MultiChoiceDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

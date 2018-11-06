@@ -19,7 +19,7 @@ except:
 gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Notebook.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Notebook.html'
 __wxPyDemoPanel__ = 'TestNB'
 
 overview = """\

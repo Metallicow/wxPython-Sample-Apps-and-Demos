@@ -21,7 +21,7 @@ except Exception:
 gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/ScrolledWindow.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.ScrolledWindow.html'
 __wxPyDemoPanel__ = 'MyCanvas'
 
 overview = """<html><body>

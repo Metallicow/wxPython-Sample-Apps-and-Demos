@@ -14,7 +14,7 @@ except ImportError:
     images = None  # Load bitmap from local directory
 
 #- wxPython Demo -------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.colourdb.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.colourdb.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

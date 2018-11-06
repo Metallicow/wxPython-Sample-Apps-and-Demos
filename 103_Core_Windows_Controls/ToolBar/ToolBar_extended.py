@@ -19,7 +19,7 @@ except Exception:
 gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/ToolBar.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.ToolBar.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

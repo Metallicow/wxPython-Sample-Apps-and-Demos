@@ -8,7 +8,7 @@ import wx
 import wx.adv
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/SashWindow.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.SashWindow.html'
 __wxPyDemoPanel__ = 'TestSashWindow'
 
 overview = """\

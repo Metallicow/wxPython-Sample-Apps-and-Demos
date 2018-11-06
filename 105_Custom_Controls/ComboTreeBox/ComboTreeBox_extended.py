@@ -6,7 +6,7 @@ import wx
 from wx.lib.combotreebox import ComboTreeBox
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.combotreebox.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.combotreebox.html'
 __wxPyDemoPanel__ = 'TestComboTreeBox'
 
 overview = wx.lib.combotreebox.__doc__

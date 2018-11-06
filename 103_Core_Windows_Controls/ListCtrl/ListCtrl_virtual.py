@@ -20,7 +20,7 @@ gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/ListCtrl.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.ListCtrl.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

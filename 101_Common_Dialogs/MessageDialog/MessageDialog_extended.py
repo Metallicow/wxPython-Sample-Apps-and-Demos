@@ -9,7 +9,7 @@ import wx.lib.scrolledpanel as scrolled
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/MessageDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.MessageDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

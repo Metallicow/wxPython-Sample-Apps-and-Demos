@@ -18,7 +18,7 @@ except Exception:
 gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/ToggleButton.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.ToggleButton.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

@@ -14,7 +14,7 @@ A checkbox is a labelled box which is either on (checkmark is visible) or off
 
 """
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/CheckBox.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.CheckBox.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 

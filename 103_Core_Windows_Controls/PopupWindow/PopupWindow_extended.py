@@ -15,7 +15,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/PopupWindow.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.PopupWindow.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

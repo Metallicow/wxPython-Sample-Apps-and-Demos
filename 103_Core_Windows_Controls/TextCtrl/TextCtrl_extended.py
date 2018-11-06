@@ -8,7 +8,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/TextCtrl.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.TextCtrl.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

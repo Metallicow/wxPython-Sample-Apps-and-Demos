@@ -10,7 +10,7 @@ import os
 import wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Listbook.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Listbook.html'
 __wxPyDemoPanel__ = 'TestListbook'
 
 overview = """\

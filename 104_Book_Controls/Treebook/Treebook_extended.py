@@ -11,7 +11,7 @@ import sys
 import wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Treebook.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Treebook.html'
 __wxPyDemoPanel__ = 'TestTreebook'
 
 overview = """\

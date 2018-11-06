@@ -9,7 +9,7 @@ from wx.lib import stattext
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/FontDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.FontDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

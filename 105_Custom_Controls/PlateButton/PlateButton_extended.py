@@ -22,7 +22,7 @@ except ImportError:
     import platebtn
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/lib.platebtn.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.platebtn.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 #-----------------------------------------------------------------------------#

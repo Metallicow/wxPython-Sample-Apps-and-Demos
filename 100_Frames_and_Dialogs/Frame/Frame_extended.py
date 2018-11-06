@@ -24,7 +24,7 @@ child components, and also communicate that information in a useful way to
 the Frame itself.
 """
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Frame.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Frame.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 #-Imports---------------------------------------------------------------------

@@ -20,7 +20,7 @@ except Exception:
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/MDIParentFrame.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.MDIParentFrame.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

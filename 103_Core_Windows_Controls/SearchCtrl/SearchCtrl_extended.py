@@ -7,7 +7,7 @@
 import  wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/SearchCtrl.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.SearchCtrl.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

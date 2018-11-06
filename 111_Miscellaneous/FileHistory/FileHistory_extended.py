@@ -10,7 +10,7 @@ import os
 import wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/FileHistory.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.FileHistory.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

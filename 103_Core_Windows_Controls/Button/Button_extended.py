@@ -21,7 +21,7 @@ gBmpDir = gFileDir + os.sep + 'bitmaps'
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Button.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Button.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

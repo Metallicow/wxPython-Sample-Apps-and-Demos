@@ -15,7 +15,7 @@ from wx.lib.wordwrap import wordwrap
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/adv.AboutDialogInfo.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.adv.AboutDialogInfo.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

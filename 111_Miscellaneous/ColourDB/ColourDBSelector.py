@@ -19,7 +19,7 @@ import wx.lib.colourdb
 
 
 #- wxPython Demo -------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.colourdb.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.colourdb.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

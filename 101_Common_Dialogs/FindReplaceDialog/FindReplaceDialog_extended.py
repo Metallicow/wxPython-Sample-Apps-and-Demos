@@ -17,7 +17,7 @@ import wx
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/FindReplaceDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.FindReplaceDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

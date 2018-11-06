@@ -13,7 +13,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/SpinButton.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.SpinButton.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

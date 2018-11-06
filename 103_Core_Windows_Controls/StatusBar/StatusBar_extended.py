@@ -11,7 +11,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/StatusBar.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.StatusBar.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

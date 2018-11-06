@@ -27,7 +27,7 @@ import wx.lib.colourselect as csel
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/wx.lib.colourselect.ColourSelect.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.lib.colourselect.ColourSelect.html'
 __wxPyDemoPanel__ = 'TestColourSelect'
 
 overview = """\

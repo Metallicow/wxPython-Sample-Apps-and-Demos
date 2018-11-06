@@ -12,7 +12,7 @@ import wx
 
 #- wxPython Demo --------------------------------------------------------------
 
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/FileDialog.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.FileDialog.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\

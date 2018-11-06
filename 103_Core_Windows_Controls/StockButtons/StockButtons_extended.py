@@ -8,7 +8,7 @@ import wx
 
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/StockButtons.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/stock_items.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

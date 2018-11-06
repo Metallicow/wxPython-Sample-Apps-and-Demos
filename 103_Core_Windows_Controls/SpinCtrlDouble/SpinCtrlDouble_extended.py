@@ -7,7 +7,7 @@
 import wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/SpinCtrlDouble.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.SpinCtrlDouble.html'
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """<html><body>

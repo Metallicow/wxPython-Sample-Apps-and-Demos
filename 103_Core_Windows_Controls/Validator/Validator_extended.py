@@ -7,7 +7,7 @@
 import  wx
 
 #- wxPython Demo --------------------------------------------------------------
-__wxPyOnlineDocs__ = 'http://wxpython.org/Phoenix/docs/html/Validator.html'
+__wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.Validator.html'
 __wxPyDemoPanel__ = 'TestValidatorPanel'
 
 overview = """\<html><body>
