@@ -263,7 +263,7 @@ class TestPanel(wx.Panel, listmix.ColumnSorterMixin):
         self.idx1 = self.il.Add(wx.Bitmap(gBmpDir + os.sep + 'smiles.bmp', wx.BITMAP_TYPE_BMP))
         self.sm_up = self.il.Add(wx.Bitmap(gBmpDir + os.sep + 'sm_up.bmp', wx.BITMAP_TYPE_BMP))
         self.sm_dn = self.il.Add(wx.Bitmap(gBmpDir + os.sep + 'sm_down.bmp', wx.BITMAP_TYPE_BMP))
-        
+
 
         self.list = TestListCtrl(self, tID,
                                  style=wx.LC_REPORT

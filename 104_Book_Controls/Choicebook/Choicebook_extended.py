@@ -26,7 +26,7 @@ pageTexts = ["Yet",
              "Select",
              "Pages"
              ]
-          
+
 
 class TestChoicebook(wx.Choicebook):
     def __init__(self, parent, log, id=wx.ID_ANY):
@@ -44,7 +44,7 @@ class TestChoicebook(wx.Choicebook):
             else:
                 st = wx.StaticText(win, wx.ID_ANY, "Page: %d" % count, (10,10))
             count += 1
-            
+
             self.AddPage(win, txt)
 
         self.Bind(wx.EVT_CHOICEBOOK_PAGE_CHANGED, self.OnPageChanged)

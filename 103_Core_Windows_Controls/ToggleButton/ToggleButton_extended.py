@@ -22,8 +22,8 @@ __wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.ToggleButton.htm
 __wxPyDemoPanel__ = 'TestPanel'
 
 overview = """\
-wx.ToggleButton is a button that stays pressed when clicked by the user. 
-In other words, it is similar to wxCheckBox in functionality but looks like a 
+wx.ToggleButton is a button that stays pressed when clicked by the user.
+In other words, it is similar to wxCheckBox in functionality but looks like a
 wxButton.
 """
 
@@ -49,7 +49,7 @@ class TestPanel(wx.Panel):
         b.SetBitmap(wx.Bitmap(gBmpDir + os.sep + 'mondrian.ico', wx.BITMAP_TYPE_ICO))
         b.SetInitialSize() # adjust default size for the bitmap
         self.Bind(wx.EVT_TOGGLEBUTTON, self.OnToggle, b)
-    
+
     def OnToggle(self, event):
         self.log.WriteText("Button %d toggled\n" % event.GetId())
 

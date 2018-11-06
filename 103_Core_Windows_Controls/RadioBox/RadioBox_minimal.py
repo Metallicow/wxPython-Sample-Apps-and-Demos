@@ -11,7 +11,7 @@ if __name__ == '__main__':
     frame = wx.Frame(None, wx.ID_ANY, "Minimal RadioBox Demo")
 
     sampleList = ["True", "False", "None"]
-    rb = wx.RadioBox(frame, wx.ID_ANY, "wx.RadioBox", choices=sampleList, 
+    rb = wx.RadioBox(frame, wx.ID_ANY, "wx.RadioBox", choices=sampleList,
                      majorDimension=3, style=wx.RA_SPECIFY_COLS | wx.NO_BORDER)
 
     frame.CreateStatusBar().SetStatusText('wxPython %s' % wx.version())

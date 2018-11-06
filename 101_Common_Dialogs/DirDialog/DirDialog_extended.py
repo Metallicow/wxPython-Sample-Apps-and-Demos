@@ -29,7 +29,7 @@ class TestPanel(wx.Panel):
 
 
     def OnButton(self, event):
-        # In this case we include a "New directory" button. 
+        # In this case we include a "New directory" button.
         dlg = wx.DirDialog(self, "Choose a directory:",
                           style=wx.DD_DEFAULT_STYLE
                            #| wx.DD_DIR_MUST_EXIST
@@ -38,7 +38,7 @@ class TestPanel(wx.Panel):
 
         # If the user selects OK, then we process the dialog's data.
         # This is done by getting the path data from the dialog - BEFORE
-        # we destroy it. 
+        # we destroy it.
         if dlg.ShowModal() == wx.ID_OK:
             self.log.WriteText('You selected: %s\n' % dlg.GetPath())
 

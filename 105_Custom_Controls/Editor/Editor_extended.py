@@ -45,8 +45,8 @@ class TestPanel(wx.Panel):
         box.Add(ed, 1, wx.ALL | wx.GROW, 1)
         self.SetSizer(box)
         self.SetAutoLayout(True)
-    
-    
+
+
 class TestEditor(editor.Editor):
     def __init__(self, parent, log, id=wx.ID_ANY, pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.SUNKEN_BORDER):
         editor.Editor.__init__(self, parent, id, pos, size, style)
@@ -68,8 +68,8 @@ class TestEditor(editor.Editor):
                       "Cut:                 Shift-Delete,   Control-X",
                       "Paste:               Shift-Insert,   Control-V",
                       ""])
-                
-                
+
+
 #- wxPy Demo -----------------------------------------------------------------
 
 

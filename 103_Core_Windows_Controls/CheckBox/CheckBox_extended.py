@@ -23,7 +23,7 @@ class TestPanel(wx.Panel):
         self.log = log
         wx.Panel.__init__(self, parent, -1)
 
-        st = wx.StaticText(self, -1, 
+        st = wx.StaticText(self, -1,
                 "This example demonstrates the wx.CheckBox control.")
 
         cb1 = wx.CheckBox(self, -1, "Apples")

@@ -12,7 +12,7 @@ if __name__ == '__main__':
     lst = ['apple', 'pear', 'banana', 'coconut', 'orange', 'grape', 'peach',
            'pineapple', 'blueberry', 'raspberry', 'blackberry', 'strawberry',
            'apricot', 'mango', 'gooseberry']
-    dlg = wx.MultiChoiceDialog(None, 
+    dlg = wx.MultiChoiceDialog(None,
                                "Pick some fruit from this list...",
                                "wx.MultiChoiceDialog", sorted(lst))
     if dlg.ShowModal() == wx.ID_OK:

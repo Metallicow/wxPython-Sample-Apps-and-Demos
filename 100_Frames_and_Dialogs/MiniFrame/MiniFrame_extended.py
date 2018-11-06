@@ -46,7 +46,7 @@ class MyMiniFrame(wx.MiniFrame):
         self.Bind(wx.EVT_BUTTON, self.OnToggleWindowStyle, button2)
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
 
-        
+
     def OnToggleWindowStyle(self, event):
         self.ToggleWindowStyle(wx.STAY_ON_TOP)
 

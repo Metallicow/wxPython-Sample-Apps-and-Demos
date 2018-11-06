@@ -13,7 +13,7 @@ __wxPyDemoPanel__ = 'TestPanel'
 overview = """<html><body>
 <h2><center>wx.SearchCtrl</center></h2>
 
-A search control is a composite control with a 
+A search control is a composite control with a
 search button, a text control, and a cancel button.
 </body></html>
 """

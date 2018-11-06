@@ -455,7 +455,7 @@ class ExceptionSTC(stc.StyledTextCtrl):
         curSel = self.GetCurrentPos()
         self.SetSelection(curSel, curSel)#DeSelect
 
-        
+
 class ExceptionPanel(wx.Panel):
     def __init__(self, parent, excInfo=None, message=None, bmp=None,
                  messageFont=None):
@@ -635,7 +635,7 @@ class ExceptionStrDialog(SC.SizedDialog):
         else:
             excStrSTC = ExceptionSTC(panel, wx.ID_ANY)
             excStrSTC.SetText('%s' % excStr)
-        
+
         # Create the Close button in the bottom row.
         close_button = wx.Button(panel, label=_(u'Close'))
         close_button.Bind(wx.EVT_BUTTON, self.OnClose)
@@ -663,7 +663,7 @@ class ExceptionStrDialog(SC.SizedDialog):
     def OnClose(self, event):
         ## print('OnClose')
         self.Destroy()
-        
+
 if __name__ == '__main__':
 
     #- Override sys.excepthook ----------------------------
@@ -687,7 +687,7 @@ if __name__ == '__main__':
     # causeAnUnhandledError
 
     ## ExceptionStrDialog(excStr='Traceback: testing\n\nHmm what went wrong...?').ShowModal()
-    
+
     # Intentionally cause some handled errors for testing.
     # Uncomment out the code to test each ErrorType.
     try:
