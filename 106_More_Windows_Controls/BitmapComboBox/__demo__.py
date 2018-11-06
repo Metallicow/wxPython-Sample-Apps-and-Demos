@@ -1,17 +1,16 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-"""
+#-MetaData --------------------------------------------------------------------
+__doc__ = """
 This module contains the meta data needed for integrating the samples
-in the User's subdir into the wxPython demo framework. Once imported,
+in the directory into the wxPython demo framework. Once imported,
 this module returns the following information:
 
 * GetDemoBitmap: returns the bitmap used in the wxPython tree control
-  to characterize the User's package;
-* GetRecentAdditions: returns a subset (or the whole set) of demos in
-  the User's package which will appear under the Recent Additions tree
-  item in the wxPython demo;
-* GetDemos: returns all the demos in the User's package;
-* GetOverview: returns a wx.html-ready representation of the User's docs.
+  to characterize the package;
+* GetDemos: returns all the demos in the package;
+* GetOverview: returns a wx.html-ready representation of the package's docs.
 
 These meta data are merged into the wxPython demo tree at startup.
 
@@ -21,16 +20,19 @@ Version 0.0.1
 """
 
 __version__ = "0.0.1"
-__author__ = "User's Name"
+__author__ = "wxPython Team"
 
 
-# Start the imports...
+#-Imports----------------------------------------------------------------------
+#--wxPython Imports.
 import wx
 from wx.lib.embeddedimage import PyEmbeddedImage
 
 
 def GetDemoBitmap():
-    """ Returns the bitmap to be used in the demo tree for the User's package. """
+    """
+    Returns the bitmap to be used for the demo tree item's bitmap.
+    """
 
     # Get the image as PyEmbeddedImage
     image = morecontrols16 = PyEmbeddedImage(
@@ -60,10 +62,13 @@ def GetDemos():
     """
 
     # The tree item text.
-    TreeItemText = "More Windows/Controls"
+    TreeItemText = "BitmapComboBox"
 
     # The tree item's demos.
-    TreeItemDemos = ()
+    TreeItemDemos = (
+        'BitmapComboBox_extended.py',
+        'BitmapComboBox_minimal.py',
+        )
 
     return TreeItemText, TreeItemDemos
 
@@ -75,8 +80,8 @@ def GetOverview():
 
     wxHtmlOverviewStr = '''\
     <html><body>
-    <center><h2>More Windows/Controls</h2></center>
-    <p>More Windows/Controls demos.
+    <center><h2>BitmapComboBox</h2></center>
+    <p>BitmapComboBox demos.
     </body></html>
     '''
 
