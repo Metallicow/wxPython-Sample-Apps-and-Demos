@@ -3702,41 +3702,87 @@ class MyApp(wx.App, wx.lib.mixins.inspection.InspectionMixin):
         splash = MySplashScreen()
         splash.Show()
 
+        #-Special Usability UI Bindings.---------------------------------------
         # Add all the MouseWheel functionality and tweaks to all app widgets
         # so that when using the mousewheel when hovered over a widget does
         # user friendly stuff,
         # like Ex: *SCROLL* the widget under the mouse pointer.
         # without losing or setting focus to it, which can be very annoying.
+        #
+        # Some controls need a little extra binding help for some reason...
+        # [StyledTextCtrl, ]
+        # Example code:
+        # gApp = wx.GetApp()  # Need to redirect these events back to app for some reason...
+        # # self.Bind(wx.EVT_ENTER_WINDOW, gApp.OnEnterWindow)
+        # self.Bind(wx.EVT_MOUSEWHEEL, gApp.OnMouseWheel)
+
+        self.leavedWindow = self
+        self.leavedWindowParent = None
         self.enteredWindow = self
+        self.enteredWindowParent = None
+        self.Bind(wx.EVT_LEAVE_WINDOW, self.OnLeaveWindow)
         self.Bind(wx.EVT_ENTER_WINDOW, self.OnEnterWindow)
         self.Bind(wx.EVT_MOUSEWHEEL, self.OnMouseWheel)
 
         return True
 
-    def OnEnterWindow(self, event):
+
+    def OnLeaveWindow(self, event):
+        """
+        Handles the ``wx.EVT_LEAVE_WINDOW`` event for :class:`MyApp`.
+
+        :param `event`: A `wx.MouseEvent` to be processed.
+        :type `event`: `wx.MouseEvent`
+        """
+        evtObj = event.GetEventObject()
+        self.leavedWindow = evtObj
+        ## print('wx.App OnLeaveWindow: evtObj = %s' % evtObj)
+        if evtObj and evtObj.GetParent():  # Not None.
+            self.leavedWindowParent = evtObj.GetParent()
         event.Skip()
-        print('GetClassName = %s' % event.GetEventObject().GetClassName())
-        self.enteredWindow = event.GetEventObject()
+
+    def OnEnterWindow(self, event):
+        """
+        Handles the ``wx.EVT_ENTER_WINDOW`` event for :class:`MyApp`.
+
+        :param `event`: A `wx.MouseEvent` to be processed.
+        :type `event`: `wx.MouseEvent`
+        """
+        evtObj = event.GetEventObject()
+        self.enteredWindow = evtObj
+        if evtObj and evtObj.GetParent():  # Not None.
+            ## print('wx.App OnEnterWindow: Parent.GetClassName = %s' % evtObj.GetParent().GetClassName())
+            self.enteredWindowParent = evtObj.GetParent()
+            ## print('wx.App OnEnterWindow: Parent %s' % evtObj.GetParent())
+        event.Skip()
 
     def GetEnteredWindow(self):
+        """
+        Get the currently entered window.
+
+        :returns: The currently entered window.
+        :rtype: `wx.Window`
+        """
         return self.enteredWindow
 
     def OnMouseWheel(self, event):
-        evtObj = event.GetEventObject()
-        wr = event.GetWheelRotation()
 
+        wr = event.GetWheelRotation()
+        evtObj = event.GetEventObject()
         print('GetEventObject = %s' % evtObj)
         print('GetEnteredWindow = %s' % self.GetEnteredWindow())
         print('GetWheelRotation = %s' % wr)
         print('wx.Window.FindFocus().GetClassName() = %s' % wx.Window.FindFocus().GetClassName())
 
-        enteredWindow = self.GetEnteredWindow()
+        enteredWindow = self.enteredWindow
+        enteredWindowParent = self.enteredWindowParent
+        leavedWindow = self.leavedWindow
+
         className = enteredWindow.GetClassName()
-        # if enteredWindow == evtObj:
-            # print('Eat the MouseWheel Event')
-            # event.Skip() # Else eat the event. We dont want two different ctrls doing something at the same time.
+        name = enteredWindow.GetName()
+
         if wr < 0:
-            print('Down')
+            ## print('Down')
             if className in ('wxStyledTextCtrl'):
                 xoffset = enteredWindow.GetXOffset()
                 ms = wx.GetMouseState()
@@ -3745,72 +3791,188 @@ class MyApp(wx.App, wx.lib.mixins.inspection.InspectionMixin):
                 altDown = ms.AltDown()
                 #-- Shift + MouseWheel = Scroll Horizontally
                 if shiftDown and not altDown and not ctrlDown:
-                    enteredWindow.SetXOffset(xoffset + 30)
-                    return
+                    if not enteredWindow.GetWrapMode():
+                        enteredWindow.SetXOffset(xoffset + 30)
 
                 #-- Ctrl + MouseWheel = Zoom
                 # Duplicate Default stc ctrl zooming behavior to bypass
                 # (MouseWheel not working after a undetermined amount of time)2.9BUG
                 elif ctrlDown and not altDown and not shiftDown:
-                   enteredWindow.SetZoom(enteredWindow.GetZoom() - 1)
-                   return
+                    if not enteredWindow.GetZoom() <= -10:
+                        enteredWindow.SetZoom(enteredWindow.GetZoom() - 1)
 
                 #-- MouseWheel = Scroll Vertically
                 # Duplicate Default stc scrolling behavior to bypass
                 # (MouseWheel not working after a undetermined amount of time)2.9BUG
                 else:
-                   enteredWindow.LineScroll(0, 3)
-                   return
+                    try:
+                        enteredWindow.LineScroll(0, event.GetLinesPerAction())
+                    except AttributeError:
+                        enteredWindow.LineScroll(0, 3)
 
-            elif className in ('wxNotebook'):
+            elif isinstance(enteredWindow, wx.Notebook):
                 enteredWindow.AdvanceSelection(False)
-            elif className in ('wxTextCtrl', 'wxTreeCtrl', 'wxHtmlWindow', 'wxListCtrl', 'wxListView'):
+            elif className in ('wxToolBar'):
+                if enteredWindow.GetParent().GetClassName() in ('wxToolbook'):
+                    enteredWindow.GetParent().AdvanceSelection(False)
+            elif className in ('wxSlider'):
+                minSlide = enteredWindow.GetMin()
+                slideTo = enteredWindow.GetValue() - enteredWindow.GetPageSize()
+                if slideTo >= minSlide:
+                    enteredWindow.SetValue(slideTo)
+                else:
+                    enteredWindow.SetValue(minSlide)
+                # Note that SetValue does not cause any command events to be emitted,
+                # so we will process one manually.
+                commandEventType = wx.wxEVT_COMMAND_SLIDER_UPDATED
+                winid = enteredWindow.GetId()
+                event = wx.CommandEvent(commandEventType, winid)
+                enteredWindow.GetEventHandler().ProcessEvent(event)
+            elif className in ('wxListBox'):
+                    enteredWindow.ScrollLines(3)
+            elif className in ('wxPyListCtrl', 'wxListCtrl', 'wxListView'):
+                ms = wx.GetMouseState()
+                ctrlDown = ms.ControlDown()
+                shiftDown = ms.ShiftDown()
+                altDown = ms.AltDown()
+                if not ctrlDown and not altDown and shiftDown:
+                    enteredWindow.ScrollList(6, 0)
+                else:
+                    enteredWindow.ScrollLines(3)
+            elif className in ('wxScrolledWindow', 'wxPyScrolledWindow', 'wxTextCtrl', 'wxPyTreeCtrl', 'wxTreeCtrl', 'wxHtmlWindow',
+                               'wxCheckListBox'):
                 enteredWindow.ScrollLines(3)
-                # enteredWindow.LineScroll(0, 3)
-            elif className in ('wxCheckListBox', 'wxListBox', 'wxComboBox', 'wxChoice'):
-                if enteredWindow.GetSelection() == wx.NOT_FOUND:
-                    enteredWindow.Select(0)
-                elif not enteredWindow.GetSelection() == enteredWindow.GetCount() - 1:
-                    enteredWindow.Select(enteredWindow.GetSelection() + 1)
+            elif self.enteredWindowParent and self.enteredWindowParent.GetClassName() in ('wxGrid'):  # Not None.
+                ms = wx.GetMouseState()
+                ctrlDown = ms.ControlDown()
+                shiftDown = ms.ShiftDown()
+                altDown = ms.AltDown()
+                #-- Shift + MouseWheel = Scroll Horizontally
+                if shiftDown and not altDown and not ctrlDown:
+                    self.enteredWindowParent.Scroll(self.enteredWindowParent.GetScrollPos(wx.HORIZONTAL) + 1,
+                                                    self.enteredWindowParent.GetScrollPos(wx.VERTICAL))
+                elif not shiftDown and not altDown and not ctrlDown:
+                    self.enteredWindowParent.ScrollLines(3)
+            elif className in ('wxComboBox', 'wxChoice'):  # , 'wxOwnerDrawnComboBox' causes a hard crash
+                count = enteredWindow.GetCount()
+                selection = enteredWindow.GetSelection()
+                if selection + 1 < count:
+                    enteredWindow.SetSelection(selection + 1)
+                    # Note that SetSelection does not cause any command events to be emitted,
+                    # so we will process one manually.
+                    if className == 'wxChoice':
+                        commandEventType = wx.wxEVT_COMMAND_CHOICE_SELECTED
+                    else:
+                        commandEventType = wx.wxEVT_COMMAND_COMBOBOX_SELECTED
+                    winid = enteredWindow.GetId()
+                    event = wx.CommandEvent(commandEventType, winid)
+                    enteredWindow.GetEventHandler().ProcessEvent(event)
+            elif className in ('wxSpinCtrl',):
+                val = enteredWindow.GetValue()
+                if not val - 1 < enteredWindow.GetMin():
+                    enteredWindow.SetValue(val - 1)
+                    if hasattr(enteredWindow, 'SetValueString'):
+                        enteredWindow.SetValueString('%s' % (val - 1))
+            elif hasattr(enteredWindow, 'ScrollLines'):
+                enteredWindow.ScrollLines(3)
+
         elif wr > 0:
-            print('Up')
+            ## print('Up')
             if className in ('wxStyledTextCtrl'):
                 xoffset = enteredWindow.GetXOffset()
                 ms = wx.GetMouseState()
                 ctrlDown = ms.ControlDown()
                 shiftDown = ms.ShiftDown()
                 altDown = ms.AltDown()
-                if shiftDown and wr > 0 and not altDown and not ctrlDown:
-                    if not xoffset <= 0:
-                        enteredWindow.SetXOffset(xoffset - 30)
-                        return
-                    else:
-                        return
+
+                #-- Shift + MouseWheel = Scroll Horizontally
+                if shiftDown and not altDown and not ctrlDown:
+                    if not xoffset <= 0 and not enteredWindow.GetWrapMode():
+                        if xoffset - 30 >= 0:
+                            enteredWindow.SetXOffset(xoffset - 30)
+                        else:
+                            enteredWindow.SetXOffset(0)
 
                 #-- Ctrl + MouseWheel = Zoom
                 # Duplicate Default stc ctrl zooming behavior to bypass
                 # (MouseWheel not working after a undetermined amount of time)2.9BUG
                 elif ctrlDown and not altDown and not shiftDown:
-                   enteredWindow.SetZoom(enteredWindow.GetZoom() + 1)
-                   return
+                    enteredWindow.SetZoom(enteredWindow.GetZoom() + 1)
 
                 #-- MouseWheel = Scroll Vertically
                 # Duplicate Default stc scrolling behavior to bypass
                 # (MouseWheel not working after a undetermined amount of time)2.9BUG
                 else:
-                   enteredWindow.LineScroll(0, -3)
-                   return
+                    try:
+                        enteredWindow.LineScroll(0, -event.GetLinesPerAction())
+                    except AttributeError:
+                        enteredWindow.LineScroll(0, -3)
 
-            elif className in ('wxNotebook'):
+            elif isinstance(enteredWindow, wx.Notebook):
                 enteredWindow.AdvanceSelection(True)
-            elif className in ('wxTextCtrl', 'wxTreeCtrl', 'wxHtmlWindow', 'wxListCtrl', 'wxListView'):
+            elif className in ('wxToolBar'):
+                if enteredWindow.GetParent().GetClassName() in ('wxToolbook'):
+                    enteredWindow.GetParent().AdvanceSelection(True)
+            elif className in ('wxSlider'):
+                maxSlide = enteredWindow.GetMax()
+                slideTo = enteredWindow.GetValue() + enteredWindow.GetPageSize()
+                if slideTo <= maxSlide:
+                    enteredWindow.SetValue(slideTo)
+                else:
+                    enteredWindow.SetValue(maxSlide)
+                # Note that SetValue does not cause any command events to be emitted,
+                # so we will process one manually.
+                commandEventType = wx.wxEVT_COMMAND_SLIDER_UPDATED
+                winid = enteredWindow.GetId()
+                event = wx.CommandEvent(commandEventType, winid)
+                enteredWindow.GetEventHandler().ProcessEvent(event)
+            elif className in ('wxListBox'):
                 enteredWindow.ScrollLines(-3)
-                # enteredWindow.LineScroll(0, -3)
-            elif className in ('wxCheckListBox', 'wxListBox', 'wxComboBox', 'wxChoice'):
-                if enteredWindow.GetSelection() == wx.NOT_FOUND:
-                    enteredWindow.Select(0)
-                elif enteredWindow.GetSelection(): # not 0
-                    enteredWindow.Select(enteredWindow.GetSelection() - 1)
+            elif className in ('wxPyListCtrl', 'wxListCtrl', 'wxListView'):
+                ms = wx.GetMouseState()
+                ctrlDown = ms.ControlDown()
+                shiftDown = ms.ShiftDown()
+                altDown = ms.AltDown()
+                if not ctrlDown and not altDown and shiftDown:
+                    enteredWindow.ScrollList(-6, 0)
+                else:
+                    enteredWindow.ScrollLines(-3)
+            elif className in ('wxScrolledWindow', 'wxPyScrolledWindow', 'wxTextCtrl', 'wxPyTreeCtrl', 'wxTreeCtrl', 'wxHtmlWindow',
+                               'wxCheckListBox'):
+                enteredWindow.ScrollLines(-3)
+            elif self.enteredWindowParent and self.enteredWindowParent.GetClassName() in ('wxGrid'):  # Not None.
+                ms = wx.GetMouseState()
+                ctrlDown = ms.ControlDown()
+                shiftDown = ms.ShiftDown()
+                altDown = ms.AltDown()
+                #-- Shift + MouseWheel = Scroll Horizontally
+                if shiftDown and not altDown and not ctrlDown:
+                    self.enteredWindowParent.Scroll(self.enteredWindowParent.GetScrollPos(wx.HORIZONTAL) - 1,
+                                                    self.enteredWindowParent.GetScrollPos(wx.VERTICAL))
+                elif not shiftDown and not altDown and not ctrlDown:
+                    self.enteredWindowParent.ScrollLines(-3)
+            elif className in ('wxComboBox', 'wxChoice'):  # , 'wxOwnerDrawnComboBox' causes a hard crash
+                selection = enteredWindow.GetSelection()
+                if selection > 0:
+                    enteredWindow.SetSelection(selection - 1)
+                    # Note that SetSelection does not cause any command events to be emitted,
+                    # so we will process one manually.
+                    if className == 'wxChoice':
+                       commandEventType = wx.wxEVT_COMMAND_CHOICE_SELECTED
+                    else:
+                       commandEventType = wx.wxEVT_COMMAND_COMBOBOX_SELECTED
+                    winid = enteredWindow.GetId()
+                    event = wx.CommandEvent(commandEventType, winid)
+                    enteredWindow.GetEventHandler().ProcessEvent(event)
+            elif className in ('wxSpinCtrl',):
+                val = enteredWindow.GetValue()
+                if not val + 1 > enteredWindow.GetMax():
+                    enteredWindow.SetValue(val + 1)
+                    if hasattr(enteredWindow, 'SetValueString'):
+                        enteredWindow.SetValueString('%s' % (val + 1))
+            elif hasattr(enteredWindow, 'ScrollLines'):
+                enteredWindow.ScrollLines(-3)
+
 
 #------------------------------------------------------------------------------
 
