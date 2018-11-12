@@ -105,7 +105,7 @@ class TestFrame(wx.Frame):
 
 class TestApp(wx.App):
     def OnInit(self):
-        gMainWin = TestFrame(None)
+        gMainWin = TestFrame(None, size=(450, 350))
         gMainWin.SetTitle('Test Demo')
         gMainWin.Show()
 
