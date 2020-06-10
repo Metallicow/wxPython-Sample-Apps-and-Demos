@@ -27,8 +27,6 @@ import wx.lib.mixins.listctrl as listmix
 ## import images
 
 
-if sys.version_info[0] == 3:
-    sys.maxint = sys.maxsize
 
 #-Globals----------------------------------------------------------------------
 try:
@@ -339,8 +337,10 @@ class TestPanel(wx.Panel, listmix.ColumnSorterMixin):
             self.list.InsertColumn(2, info)
 
         items = musicdata.items()
+        count = self.GetItemCount()
         for key, data in items:
-            index = self.list.InsertItem(sys.maxint, data[0], self.idx1)
+            index = self.list.InsertItem(count, data[0], self.idx1)
+            count += 1
             self.list.SetItem(index, 1, data[1])
             self.list.SetItem(index, 2, data[2])
             self.list.SetItemData(index, key)

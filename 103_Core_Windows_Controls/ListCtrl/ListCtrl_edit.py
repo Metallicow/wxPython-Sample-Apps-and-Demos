@@ -21,10 +21,6 @@ import wx
 import wx.lib.mixins.listctrl as listmix
 
 
-if sys.version_info[0] == 3:
-    sys.maxint = sys.maxsize
-
-
 #- wxPython Demo --------------------------------------------------------------
 __wxPyOnlineDocs__ = 'https://wxpython.org/Phoenix/docs/html/wx.ListCtrl.html'
 __wxPyDemoPanel__ = 'TestPanel'
@@ -84,8 +80,10 @@ class TestListCtrl(wx.ListCtrl,
         self.InsertColumn(5, "Len 3", wx.LIST_FORMAT_RIGHT)
 
         items = listctrldata.items()
+        count = self.GetItemCount()
         for key, data in items:
-            index = self.InsertItem(sys.maxint, data[0])
+            index = self.InsertItem(count, data[0])
+            count += 1
             self.SetItem(index, 1, data[1])
             self.SetItem(index, 2, data[2])
             self.SetItemData(index, key)
